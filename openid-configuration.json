@@ -1,7 +1,24 @@
 {
     "version": "3.0",
     "token_endpoint_auth_methods_supported": [
-        "public"
+        "public",
+        "attest_jwt_client_auth"
+    ],
+    "client_attestation_signing_alg_values_supported": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "RS256",
+        "RS384",
+        "RS512"
+    ],
+    "client_attestation_pop_signing_alg_values_supported": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "RS256",
+        "RS384",
+        "RS512"
     ],
     "claims_parameter_supported": true,
     "request_parameter_supported": true,
@@ -13,7 +30,7 @@
         "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "refresh_token"
     ],
-    "jwks_uri": "https://dev.issuer.eudiw.dev/oidc/static/jwks.json",
+    "jwks_uri": "https://192.168.0.110:5001/static/jwks.json",
     "scopes_supported": [
         "openid"
     ],
@@ -36,9 +53,6 @@
         "ES256",
         "ES384",
         "ES512",
-        "PS256",
-        "PS384",
-        "PS512",
         "HS256",
         "HS384",
         "HS512"
@@ -50,9 +64,6 @@
         "ES256",
         "ES384",
         "ES512",
-        "PS256",
-        "PS384",
-        "PS512",
         "HS256",
         "HS384",
         "HS512"
@@ -66,10 +77,7 @@
         "ES512",
         "HS256",
         "HS384",
-        "HS512",
-        "PS256",
-        "PS384",
-        "PS512"
+        "HS512"
     ],
     "frontchannel_logout_supported": true,
     "frontchannel_logout_session_required": true,
@@ -78,12 +86,12 @@
     "code_challenge_methods_supported": [
         "S256"
     ],
-    "issuer": "https://dev.issuer.eudiw.dev/oidc",
-    "registration_endpoint": "https://dev.issuer.eudiw.dev/oidc/registration",
-    "introspection_endpoint": "https://dev.issuer.eudiw.dev/oidc/introspection",
-    "authorization_endpoint": "https://dev.issuer.eudiw.dev/oidc/authorization",
-    "token_endpoint": "https://dev.issuer.eudiw.dev/oidc/token",
-    "userinfo_endpoint": "https://dev.issuer.eudiw.dev/oidc/userinfo",
-    "end_session_endpoint": "https://dev.issuer.eudiw.dev/oidc/session",
-    "pushed_authorization_request_endpoint": "https://dev.issuer.eudiw.dev/oidc/pushed_authorization"
+    "issuer": "https://192.168.0.110:5001",
+    "registration_endpoint": "https://192.168.0.110:5001/registration",
+    "introspection_endpoint": "https://192.168.0.110:5001/introspection",
+    "authorization_endpoint": "https://192.168.0.110:5001/authorization",
+    "token_endpoint": "https://192.168.0.110:5001/token",
+    "userinfo_endpoint": "https://192.168.0.110:5001/userinfo",
+    "end_session_endpoint": "https://192.168.0.110:5001/session",
+    "pushed_authorization_request_endpoint": "https://192.168.0.110:5001/pushed_authorization"
 }

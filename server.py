@@ -74,9 +74,9 @@ def main(config_file, args):
         exit(0)
 
     kwargs = {}
-    """ if context:
-        kwargs["ssl_context"] = context """
-        # kwargs["request_handler"] = PeerCertWSGIRequestHandler
+    # Enable HTTPS if cert and key are provided
+    if hasattr(args, "cert") and hasattr(args, "key") and args.cert and args.key:
+        kwargs["ssl_context"] = (args.cert, args.key)
 
     app.run(
         host="0.0.0.0",#web_conf["domain"],
@@ -91,6 +91,8 @@ if __name__ == "__main__":
     parser.add_argument("-d", dest="display", action="store_true")
     parser.add_argument("-t", dest="tls", action="store_true")
     parser.add_argument("-k", dest="insecure", action="store_true")
+    parser.add_argument("--cert", dest="cert", type=str, default=None, help="Path to SSL certificate file")
+    parser.add_argument("--key", dest="key", type=str, default=None, help="Path to SSL key file")
     parser.add_argument(dest="config")
     args = parser.parse_args()
     main(args.config, args)

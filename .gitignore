@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Local runtime artifacts
+.DS_Store
+server.crt
+server.key
+certs/*.crt
+certs/*.key
+certs/*.pem
+private/cookie_jwks.json
+private/jwks.json
+private/token_jwks.json
+static/jwks.json

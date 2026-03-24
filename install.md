@@ -76,6 +76,28 @@ To install [Flask](https://flask.palletsprojects.com/en/2.3.x/), please follow t
     ./run.sh
     ```
 
+### 3.1 Local HTTPS helper script for LAN development
+
+If you are running the local issuer backend on port `5002` and want this authorization server to serve discovery, PAR, authorization, token, and redirect endpoints over HTTPS on your LAN IP, the repository includes a helper script:
+
+```shell
+MYIP=192.168.0.110 AUTH_PORT=5001 ISSUER_PORT=5002 ./patch_auth_server_local.sh
+```
+
+What it does:
+
++ rewrites [config.json](config.json) with the local auth-server port, domain, base URL, and redirect target
++ rewrites [openid-configuration.json](openid-configuration.json) so discovery endpoints point at the local auth server
++ ensures discovery metadata advertises wallet client attestation support for the local issuance flow
++ updates [views.py](views.py) so the auth-server redirect goes to the local issuer backend
+
+Notes:
+
++ this script modifies tracked files in place; review the resulting diff before committing
++ it is intended for local development with a LAN IP and self-signed HTTPS, not production deployment
++ after patching, start the authorization server with `./run.sh`
++ if you need to generate a self-signed certificate for the LAN IP, use the provided `san.cnf` when creating `server.crt` and `server.key`
+
 
 ## 5. Make your local EUDIW AUthorization Server available on the Internet (optional)
 

@@ -60,6 +60,8 @@ Pre-requisites:
 
 Click [here](install.md) for detailed installation instructions.
 
+For local LAN HTTPS development, see the helper-script workflow in [install.md](install.md#31-local-https-helper-script-for-lan-development).
+
 ## 3. Frequently Asked Questions
 
 ### A. How to make your local Authorization server available on the Internet?

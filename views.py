@@ -833,7 +833,7 @@ def jws_token():
     # This is a test to redirect to an issuer endpoint that will call the oauth country form / countries and save data before continuing.
 
     return redirect(
-        "https://dev.issuer.eudiw.dev/oidc/verify/user"
+        "https://192.168.0.110:5002/oidc/verify/user"
         + "?"
         + urllib.parse.urlencode(
             {
