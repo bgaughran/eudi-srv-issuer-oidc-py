@@ -62,6 +62,14 @@ Click [here](install.md) for detailed installation instructions.
 
 For local LAN HTTPS development, see the helper-script workflow in [install.md](install.md#31-local-https-helper-script-for-lan-development).
 
+## 2. Validation Smoke Test
+
+The repository includes [validate_local_build.sh](validate_local_build.sh) for local validation.
+
+The smoke phase validates that the authorization server can construct the Flask application and serve `/.well-known/openid-configuration` through the in-process test client.
+
+If the smoke test fails, the script exits non-zero and attempts to stop any process already listening on the expected local auth port (`5001` by default) so a failed health signal does not leave a stale listener behind.
+
 ## 3. Frequently Asked Questions
 
 ### A. How to make your local Authorization server available on the Internet?
