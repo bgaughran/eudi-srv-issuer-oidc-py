@@ -1,6 +1,12 @@
 set -euo pipefail
 
-MYIP="${MYIP:-192.168.0.110}"
+detect_lan_ip() {
+    ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || true
+}
+
+DETECTED_LAN_IP="$(detect_lan_ip)"
+
+MYIP="${MYIP:-${DETECTED_LAN_IP:-localhost}}"
 ISSUER_PORT="${ISSUER_PORT:-5002}"
 AUTH_PORT="${AUTH_PORT:-5001}"
 
@@ -82,10 +88,9 @@ for f in files:
     text = f.read_text()
     text = text.replace("https://dev.issuer.eudiw.dev/oidc", "${AUTH_BASE}/oidc")
     text = text.replace("https://issuer.eudiw.dev/oidc", "${AUTH_BASE}/oidc")
-    text = text.replace("http://192.168.0.110:5000/auth_choice", "${ISSUER_BASE}/auth_choice")
-    text = text.replace("http://192.168.0.110:5000/auth_choice", "${ISSUER_BASE}/auth_choice")
-    text = text.replace("https://dev.issuer.eudiw.dev/oidc/verify/user", "${AUTH_BASE}/verify/user")
-    text = text.replace("http://192.168.0.110:5001/verify/user", "${AUTH_BASE}/verify/user")
+    text = re.sub(r"https?://[^/]+/auth_choice", "${ISSUER_BASE}/auth_choice", text)
+    text = re.sub(r"https?://[^/]+/oidc/verify/user", "${ISSUER_BASE}/oidc/verify/user", text)
+    text = re.sub(r"https?://[^/]+/verify/user", "${AUTH_BASE}/verify/user", text)
     f.write_text(text)
     print("updated", f)
 PY

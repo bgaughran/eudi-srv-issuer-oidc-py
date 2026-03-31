@@ -832,8 +832,17 @@ def jws_token():
 
     # This is a test to redirect to an issuer endpoint that will call the oauth country form / countries and save data before continuing.
 
+    issuer_verify_user_url = current_app.authorization_redirect_url
+    if issuer_verify_user_url.endswith("/auth_choice"):
+        issuer_verify_user_url = (
+            issuer_verify_user_url.rsplit("/auth_choice", 1)[0]
+            + "/oidc/verify/user"
+        )
+    else:
+        issuer_verify_user_url = issuer_verify_user_url.rstrip("/") + "/oidc/verify/user"
+
     return redirect(
-        "https://192.168.0.110:5002/oidc/verify/user"
+        issuer_verify_user_url
         + "?"
         + urllib.parse.urlencode(
             {

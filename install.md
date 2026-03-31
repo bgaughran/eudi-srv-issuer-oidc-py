@@ -81,7 +81,7 @@ To install [Flask](https://flask.palletsprojects.com/en/2.3.x/), please follow t
 If you are running the local issuer backend on port `5002` and want this authorization server to serve discovery, PAR, authorization, token, and redirect endpoints over HTTPS on your LAN IP, the repository includes a helper script:
 
 ```shell
-MYIP=192.168.0.110 AUTH_PORT=5001 ISSUER_PORT=5002 ./patch_auth_server_local.sh
+MYIP=<your-lan-ip> AUTH_PORT=5001 ISSUER_PORT=5002 ./patch_auth_server_local.sh
 ```
 
 What it does:
