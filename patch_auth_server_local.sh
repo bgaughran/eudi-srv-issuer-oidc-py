@@ -21,6 +21,7 @@ from pathlib import Path
 
 p = Path("config.json")
 cfg = json.loads(p.read_text())
+trusted_attesters_path = str(Path("trusted_attesters").resolve())
 
 cfg["port"] = ${AUTH_PORT}
 cfg["domain"] = "${MYIP}:${AUTH_PORT}"
@@ -32,12 +33,16 @@ cfg["op"]["server_info"]["add_ons"]["dpop"]["kwargs"]["allowed_htu"] = [
     f"https://${MYIP}:${AUTH_PORT}/oidc/token"
 ]
 
+cfg["op"]["server_info"]["endpoint"]["token"]["kwargs"]["trusted_attesters_path"] = trusted_attesters_path
+cfg["op"]["server_info"]["endpoint"]["pushed_authorization"]["kwargs"]["trusted_attesters_path"] = trusted_attesters_path
+
 cfg["op"]["server_info"]["issuer"] = "https://{domain}"
 cfg["webserver"]["port"] = ${AUTH_PORT}
 cfg["webserver"]["domain"] = "{domain}"
 
 p.write_text(json.dumps(cfg, indent=2))
 print("updated", p)
+print("trusted_attesters_path", trusted_attesters_path)
 PY
 
 python3 - <<PY

@@ -33,10 +33,10 @@
     }
   },
   "port": 5001,
-  "domain": "192.168.0.166:5001",
+  "domain": "192.168.0.131:5001",
   "server_name": "{domain}",
-  "base_url": "https://192.168.0.166:5001",
-  "authorization_redirect_url": "https://192.168.0.166:5002/auth_choice",
+  "base_url": "https://192.168.0.131:5001",
+  "authorization_redirect_url": "https://192.168.0.131:5002/auth_choice",
   "op": {
     "server_info": {
       "add_ons": {
@@ -62,8 +62,8 @@
               "HS512"
             ],
             "allowed_htu": [
-              "https://192.168.0.166:5001/token",
-              "https://192.168.0.166:5001/oidc/token"
+              "https://192.168.0.131:5001/token",
+              "https://192.168.0.131:5001/oidc/token"
             ]
           }
         }
@@ -238,7 +238,8 @@
               "public",
               "wallet_attestation",
               "dpop"
-            ]
+            ],
+            "trusted_attesters_path": "/Users/bg/Dropbox/svn/code/workstreams/irishlife-verifier/eudi-srv-issuer-oidc-py/trusted_attesters"
           }
         },
         "userinfo": {
@@ -278,7 +279,8 @@
               "public",
               "wallet_attestation",
               "dpop"
-            ]
+            ],
+            "trusted_attesters_path": "/Users/bg/Dropbox/svn/code/workstreams/irishlife-verifier/eudi-srv-issuer-oidc-py/trusted_attesters"
           }
         }
       },

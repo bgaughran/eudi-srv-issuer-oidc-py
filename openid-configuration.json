@@ -30,7 +30,7 @@
         "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "refresh_token"
     ],
-    "jwks_uri": "https://192.168.0.166:5001/static/jwks.json",
+    "jwks_uri": "https://192.168.0.131:5001/static/jwks.json",
     "scopes_supported": [
         "openid"
     ],
@@ -86,12 +86,12 @@
     "code_challenge_methods_supported": [
         "S256"
     ],
-    "issuer": "https://192.168.0.166:5001",
-    "registration_endpoint": "https://192.168.0.166:5001/registration",
-    "introspection_endpoint": "https://192.168.0.166:5001/introspection",
-    "authorization_endpoint": "https://192.168.0.166:5001/authorization",
-    "token_endpoint": "https://192.168.0.166:5001/token",
-    "userinfo_endpoint": "https://192.168.0.166:5001/userinfo",
-    "end_session_endpoint": "https://192.168.0.166:5001/session",
-    "pushed_authorization_request_endpoint": "https://192.168.0.166:5001/pushed_authorization"
+    "issuer": "https://192.168.0.131:5001",
+    "registration_endpoint": "https://192.168.0.131:5001/registration",
+    "introspection_endpoint": "https://192.168.0.131:5001/introspection",
+    "authorization_endpoint": "https://192.168.0.131:5001/authorization",
+    "token_endpoint": "https://192.168.0.131:5001/token",
+    "userinfo_endpoint": "https://192.168.0.131:5001/userinfo",
+    "end_session_endpoint": "https://192.168.0.131:5001/session",
+    "pushed_authorization_request_endpoint": "https://192.168.0.131:5001/pushed_authorization"
 }
