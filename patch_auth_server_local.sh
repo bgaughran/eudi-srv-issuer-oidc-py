@@ -12,6 +12,8 @@ AUTH_PORT="${AUTH_PORT:-5001}"
 LOCAL_RUNTIME_DIR="${LOCAL_RUNTIME_DIR:-$(pwd -P)/.local/runtime}"
 AUTH_CONFIG_FILE="${AUTH_CONFIG_FILE:-$LOCAL_RUNTIME_DIR/config.json}"
 AUTH_OPENID_CONFIGURATION_FILE="${AUTH_OPENID_CONFIGURATION_FILE:-$LOCAL_RUNTIME_DIR/openid-configuration.json}"
+AUTH_SERVER_CERT_FILE="${AUTH_SERVER_CERT_FILE:-${SHARED_CERT_FILE:-}}"
+AUTH_SERVER_KEY_FILE="${AUTH_SERVER_KEY_FILE:-${SHARED_KEY_FILE:-}}"
 
 ISSUER_BASE="https://${MYIP}:${ISSUER_PORT}"
 AUTH_BASE="https://${MYIP}:${AUTH_PORT}"
@@ -46,6 +48,12 @@ cfg["op"]["server_info"]["endpoint"]["pushed_authorization"]["kwargs"]["trusted_
 cfg["op"]["server_info"]["issuer"] = "https://{domain}"
 cfg["webserver"]["port"] = ${AUTH_PORT}
 cfg["webserver"]["domain"] = "{domain}"
+
+auth_server_cert_file = "${AUTH_SERVER_CERT_FILE}"
+auth_server_key_file = "${AUTH_SERVER_KEY_FILE}"
+if auth_server_cert_file and auth_server_key_file:
+    cfg["webserver"]["server_cert"] = auth_server_cert_file
+    cfg["webserver"]["server_key"] = auth_server_key_file
 
 output_path.write_text(json.dumps(cfg, indent=2))
 print("generated", output_path)
